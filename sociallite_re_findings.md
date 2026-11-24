@@ -274,7 +274,7 @@ These scripts operate at the DOM/network level: hiding selectors, intercepting `
 - `TAG = "AppBlocker"`, `HEARTBEAT_INTERVAL_MS = 300000` (lines 55-56).
 - Package → platform map: Instagram, YouTube, TikTok (both packages), Snapchat, X (three packages), Facebook (katana/lite), LinkedIn.
 - Tracks foreground package via `AccessibilityNodeInfo.getPackageName()`; uses usage tracker `ge/lc` and quota/sleep/schedule state.
-- `isProtectedPackage` caches the essential-app exclusion set for 60,001 ms and calls `ge.d2.J(context)`; on failure it returns `true` (fail-open for excluded apps) (`AppBlockerService.java:230`).
+- `isProtectedPackage` (`AppBlockerService.java:495-510`, JADX `--show-bad-code`): reads `System.currentTimeMillis()`, refreshes `protectedPackages` via `d2.J(this)` when cache age is `>= 60001` ms, and returns `true` if refresh throws. The `protectedPackagesAt` field records the refresh time; exact set composition is in `ge/d2.J`.
 - `launchBlockOverlay(platform, reason, package_name, sleep_block)` starts `BlockedAppActivity` with flags `335544320` and extras `platform`, `reason`, `package_name`, `sleep_block` (line 266).
 - `BlockedAppActivity` also reads `in_app`; `leaveBlockedApp` returns HOME unless the block originated in-app.
 - Post-mode / content-break state is persisted as `contentBreakActive`, `contentBreakEndTime`, and `postmode_<platform>`.
@@ -505,7 +505,7 @@ High confidence:
 - Manifest/components, permissions, API endpoints with literal call sites, prefs keys, Room schema, billing IDs, deeplink contracts, WebView bridge method names, VPN DNS mechanics, notification maps, accessibility node IDs, device identity rotation.
 
 Medium confidence:
-- Exact conditions inside remaining raw/bytecode methods: `AppBlockerService.isProtectedPackage`, `oe/i1.q` (not decompiled), `ge/mb.l`, `fe/h0` lambda cases, `ge/c.Q`/`Y` (raw), `BlockedAppActivity` Compose lambda (raw).
+- Exact conditions inside remaining raw/bytecode methods: `oe/i1.q` (not decompiled), `ge/mb.l`, `fe/h0` lambda cases, `ge/c.Q`/`Y` (raw), `BlockedAppActivity` Compose lambda (raw).
 - Kid script runtime behavior is inferred from asset source + config builder, not executed.
 
 Low confidence / unverified:
