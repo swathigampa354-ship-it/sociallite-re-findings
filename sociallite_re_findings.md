@@ -444,6 +444,61 @@ On first launch, legacy cohort migration sets `legacyCohortMigrated`, `legacyFre
 
 ---
 
+## 15. UI/UX and notification-setting patterns
+
+### 15.1 Home / dashboard / shell
+
+- Home Hub/dashboard (`dashboard_*`, `home_*` strings) shows: apps, current blocked state, quick block/start, sleep, manage session, and “no daily limits set.”
+- Onboarding/tour strings: `landingtour_home_title`, `landingtour_family_title`, `landingtour_webapps_title`; swipe guides are `home_tour_swipe_to_home`, `home_tour_swipe_to_blocking`, `home_tour_swipe_to_settings`, `home_tour_return_home`, and `home_tour_tap_instagram`.
+- Block Box (`home_block_box_info_*`) is a drag-down app target; drag the app down to use its daily short-video allowance.
+- Manage-apps flow: `home_manage_apps`, `home_manage_apps_hint`, `home_customize_apps_title`, `home_add_apps_dismiss_desc`.
+- Quick Launch widgets use four icons `R.id.ql_icon1..4`; `hqs_app_settings_title`, `hqs_panel_platform_settings_format` present platform settings.
+- Other homes: Billing/accounts/status surfaces (`billing_banner_*`, `billing_notif_*`), Family/kid (`family_*`), Goal progress (`goal_*`), Awards (`award_*`), and Web Apps/Plist (`hqs_*`).
+
+### 15.2 Theme/appearance/a11y gating
+
+- Theme mode strings: `hqs_appearance_theme_system`, `hqs_appearance_theme_light`, `hqs_appearance_theme_dark`; prefs `themeMode`, `darkModeEnabled`, `darkModeStrategy`; `MainActivity.attachBaseContext` maps legacy `darkModeEnabled` to `themeMode`.
+- App locale: `appLocale`; settings strings include locale/language labels in `strings.xml`.
+- Icon themes: `hqs_icon_theme_title`, `hqs_icon_theme_classic`, `hqs_icon_theme_modern`, `hqs_icon_theme_painted`.
+- Grayscale: `hqs_grayscale_mode_layout_options`, `hqs_grayscale_body`, pref `grayscaleMode`.
+- Accessibility prompts: `block_screen_a11y_required_title/body`, manifest `ACCESSIBILITY_SERVICE_ENABLED` / `BIND_ACCESSIBILITY_SERVICE`; services `AppBlockerService` and `NativeReelsBlockerService`.
+- “Use system settings” style prompt strings appear in `block_screen_a11y_required_body`, `app_limits_usage_access`, `block_screen_notif_dialog_*`, and permission descriptions.
+
+### 15.3 Platform WebView UI/UX
+
+- Each platform has a dedicated WebView (`oe/i1`) with allowlisted hosts and JS/CSS injection.
+- In-page controls vary by platform:
+  - Instagram/Facebook: hide Home Feed/Explore/Shorts/Stories/Saved; block ads/story ads/suggested/suggested posts; DM-only mode; Mute friend stories.
+  - YouTube: hide Shorts shelves/tabs, recommendations, ads; custom player/config; keep screen awake while playing.
+  - TikTok: block Explore/Live/Search/Shop/Upload/ForYou, ads, DMs; per-app toggles.
+  - X/Twitter: For You, Promoted, Trending, DMs; grayscale.
+  - Snapchat: Spotlight/Discover/Stories, download prompts, web UA/viewport spoofing.
+  - Reddit/LinkedIn: block games/news/promoted/recommended/search; per-app toggles; LinkedIn has analytics toggles.
+- Short-form automation: auto-dismiss reels/shorts/Spotlight, route to DMs, log banner/timeline events.
+
+### 15.4 Notification settings and behavior patterns
+
+Static evidence, no runtime:
+
+- `NotificationBlockerService` package → platform map (`NotificationBlockerService.java:22`):
+  - Instagram: `com.instagram.android`
+  - YouTube: `com.google.android.youtube`
+  - TikTok: `com.zhiliaoapp.musically`, `com.ss.android.ugc.trill`
+  - Snapchat: `com.snapchat.android`
+  - X: `com.twitter.android`, `com.twitter.android.lite`, `com.atebits.Tweetie2`
+  - Facebook: `com.facebook.katana`, `com.facebook.lite`, `com.facebook.orca`
+  - LinkedIn: `com.linkedin.android`
+- Display names (`NotificationBlockerService.java:25`): `Instagram`, `YouTube`, `TikTok`, `Snapchat`, `X`, `Facebook`, `LinkedIn`.
+- Platform channels (`NotificationBlockerService.java:28`): `sl_msg_instagram`, `sl_msg_youtube`, `sl_msg_tiktok`, `sl_msg_snapchat`, `sl_msg_twitter`, `sl_msg_facebook`, `sl_msg_linkedin`.
+- Main global prefs: `sociallite_notifications`, `sociallite_notif_<platform>`, `redirect_notif_<platform>`.
+- Behavior in `onNotificationPosted` (`NotificationBlockerService.java:67-104`):
+  - If global redirect is on and the platform-specific redirect flag is on, it reposts/transforms via `a(...)` (not decompiled).
+  - Else if app blocking is enabled and protected/platform blocked, it cancels the original notification.
+- Removal behavior: if removal reason is 3 or 8, it cancels the mirrored channel `sl_<platform>` (`NotificationBlockerService.java:114-122`).
+- Related notification strings from `strings.xml`: `hqs_notifications_title`, `hqs_notifications_description`, `block_screen_notif_dialog_title/body/enable/skip`, `sociallite_notif_*` usage, `sl_msg_*` channel names, plus billing notifications `billing_notif_channel_name` and web-blocker `sl_web_blocker` (`WebBlockerVpnService.java:332`).
+
+---
+
 ## 13. Decompilation gaps / confidence
 
 High confidence:
@@ -467,6 +522,7 @@ Low confidence / unverified:
 - `artifact.json` — REA artifact inventory (`ev_fc1417...`).
 - `resources.json` — apktool resource/manifest evidence (`ev_8f9f...`).
 - `AndroidManifest.xml` — decoded manifest.
+- `apktool_full/` — full apktool decode (`apktool_full.log`, `apktool_full/res/values/strings.xml`, `apktool_full/AndroidManifest.xml`).
 - `jadx_out/sources/` — full JADX Java tree.
 - Key files:
   - `com/sociallite/android/MainActivity.java`
