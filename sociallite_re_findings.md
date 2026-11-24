@@ -144,12 +144,21 @@ Event catalog (`je/e.java`): `app_first_launch`, `session_started`, `session_end
 
 Enqueue path (`je/r.a`, `je/r.b`): builds a `PendingSyncRecord` with current user id, experiment values from `sociallite_experiments` prefixed `exp_<experiment>`, device install UUID, flow session UUID, UTC ISO timestamp, and client UUID. Enqueue is gated by experiment/state check `ge.c.h(ge.c.D0(context), ge.b.f5909u)`.
 
-Flush scheduling: `a7/c.java:324` enqueues `SyncFlushWorker` as periodic work every 15 minutes under work name `sl_sync_flush`; `AppBlockerHealthWorker` every 15 minutes under `sl_blocker_health`. Trigger reasons are `BUFFER_GREW`, `BACKGROUND`, `FOREGROUND`, `LAUNCH`, `PERIODIC`, `URGENT` (`je/f`). The worker’s `doWork` body is one of the JADX gaps (`SyncFlushWorker.f` not decompiled).
+Flush scheduling: `a7/c.java:324` enqueues `SyncFlushWorker` as periodic work every 15 minutes under work name `sl_sync_flush`; `AppBlockerHealthWorker` every 15 minutes under `sl_blocker_health`. Trigger reasons are `BUFFER_GREW`, `BACKGROUND`, `FOREGROUND`, `LAUNCH`, `PERIODIC`, `URGENT` (`je/f`).
 
-Verified related sync API pieces:
+Verified upload path with JADX `--show-bad-code` (see `jadx_out_showbad/sources/...`):
+- `SyncFlushWorker.f` (`com/sociallite/android/sync/SyncFlushWorker.java:31-70`): gets `je.r` singleton, gets `je.w` via `je.h.e(context).f8784d`, calls `je.w.c(je.f.f8754w, x)`.
+- `je/w.b` (`je/w.java:73-174`): filters queue, groups by `event_category`, iterates categories.
+- `je/w.c` (`je/w.java:180-247`): sets synchronous client callback state, calls `b(...)`.
+- `je/w.d` (`je/w.java:269-635`) is the actual HTTP flush path.
+  - Reads queue with `je.h.y(...)` at `je/w.java:95`/`105`/`138`; returns early if empty (`je/w.java:151`).
+  - Sends `POST https://hgilmtfkdoaohavtrenz.supabase.co/functions/v1/sync-batch` (`je/w.java:377`).
+  - Sets `Content-Type: application/json` (`je/w.java:381`) and `Authorization: Bearer <auth_token>` when present (`je/w.java:382-384`); connect/read timeout 30s (`je/w.java:385-386`).
+  - Body (`je/w.java:369-374`): `device_install_uuid`, `platform: "android"`, `app_version` from `PackageInfo.versionName`, `client_now_at_send` (UTC ISO-8601), and `events[]`; each event is `{event_name, event_category, client_record_uuid, flow_session_uuid, occurred_at, properties}` (`je/w.java:354-360`).
+  - On 200, parses response via `c9/v.z` (`je/w.java:409`); on 429 creates `je.o(Retry-After seconds)` (`je/w.java:410-412`); other statuses create `je.l`/`je.p` client/server errors (`je/w.java:413-415`); exceptions create `je.n`.
+  - Success deletes accepted UUIDs from `pending_sync_queue` (`je/w.java:489-498`). Rejected UUIDs are logged/retained for retry (`je/w.java:596-602`).
 - DEX also contains `https://hgilmtfkdoaohavtrenz.supabase.co/functions/v1/sync-batch`, `/functions/v1/daily-batch`, and `/functions/v1/get-active-announcement`; `SyncAPI` log references `/sync-batch`.
 - `c9/v.z` parses the `/sync-batch` response at `c9/v.java:629-664`: JSON fields `accepted` (array of UUID strings) and `rejected` (array of `{client_record_uuid, reason}`); unparseable body returns `je/p(200, body)`.
-- `je/w` is the remainder of the flush path (`je/w.d`, `je/w.b`, `je/w.c`), but its body is raw/not decompiled, so exact request/response handling should be read in smali.
 
 ### Preferences
 
@@ -441,13 +450,13 @@ High confidence:
 - Manifest/components, permissions, API endpoints with literal call sites, prefs keys, Room schema, billing IDs, deeplink contracts, WebView bridge method names, VPN DNS mechanics, notification maps, accessibility node IDs, device identity rotation.
 
 Medium confidence:
-- Exact conditions inside raw/bytecode methods: `AppBlockerService.isProtectedPackage` (logic visible via bytecode comments), `SyncFlushWorker.f` (not decompiled), `oe/i1.q` (not decompiled), `ge/mb.l`, `fe/h0` lambda cases, `ge/c.Q`/`Y` (raw), `BlockedAppActivity` Compose lambda (raw).
+- Exact conditions inside remaining raw/bytecode methods: `AppBlockerService.isProtectedPackage`, `oe/i1.q` (not decompiled), `ge/mb.l`, `fe/h0` lambda cases, `ge/c.Q`/`Y` (raw), `BlockedAppActivity` Compose lambda (raw).
 - Kid script runtime behavior is inferred from asset source + config builder, not executed.
 
 Low confidence / unverified:
 - APK signature scheme (v2/v3 presence not verified because `apksigner` is unavailable; no v1 `META-INF` certs).
 - Whether `auth-login` is reachable via reflection/dynamic dispatch.
-- Exact remote sync payload for `SyncFlushWorker` (worker body not decompiled).
+- Exact `daily-batch`/`get-active-announcement` request bodies (endpoints and response parsing for `/sync-batch` verified; `je/w` upload path now verified above).
 - Runtime behavior on-device (no emulator/device instrumentation performed).
 
 ---
@@ -470,6 +479,7 @@ Low confidence / unverified:
   - `com/sociallite/android/sync/DeviceSyncDatabase_Impl.java`
   - `je/b.java`, `je/c.java`, `je/e.java`, `je/f.java`, `je/h.java`, `je/i.java`, `je/r.java`, `je/w.java`
   - `c9/v.java` (verified `/sync-batch` response parsing)
+  - JADX `--show-bad-code`: `jadx_out_showbad/sources/com/sociallite/android/sync/SyncFlushWorker.java`, `jadx_out_showbad/sources/je/w.java`, `jadx_out_showbad/sources/je/t.java`, `jadx_out_showbad/sources/je/u.java`, `jadx_out_showbad/sources/je/v.java`
   - `ge/c0.java`, `ge/x.java`, `ge/d2.java`, `ge/mb.java`, `ge/i3.java`, `ge/k1.java`, `ge/d1.java`, `ge/q9.java`, `ge/b9.java`, `ge/b2.java`, `ge/c2.java`, `ge/cb.java`, `ge/nc.java`
   - `oe/i1.java`, `oe/c1.java`, `oe/d1.java`, `oe/q.java`, `oe/r1.java`
   - `fe/z0.java`, `fe/x0.java`, `fe/h0.java`, `fe/i.java`
