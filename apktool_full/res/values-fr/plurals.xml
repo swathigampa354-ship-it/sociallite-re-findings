@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="app_limit_group_app_count">
+        <item quantity="one">%1$d application</item>
+        <item quantity="other">%1$d applications</item>
+    </plurals>
+    <plurals name="block_active_title">
+        <item quantity="one">Blocage de %1$d app</item>
+        <item quantity="other">Blocage de %1$d apps</item>
+    </plurals>
+    <plurals name="block_pause_challenge_add_fingers">
+        <item quantity="one">Ajoute %1$d doigt de plus</item>
+        <item quantity="other">Ajoute %1$d doigts de plus</item>
+    </plurals>
+    <plurals name="goal_days_within_limit">
+        <item quantity="one">%1$d jour dans ta limite</item>
+        <item quantity="other">%1$d jours dans ta limite</item>
+    </plurals>
+    <plurals name="ob_goal_time_hours">
+        <item quantity="one">%1$s heure</item>
+        <item quantity="many">%1$s heures</item>
+        <item quantity="other">%1$s heures</item>
+    </plurals>
+    <plurals name="ob_pace_day_count">
+        <item quantity="one">%1$d jour</item>
+        <item quantity="many">%1$d jours</item>
+        <item quantity="other">%1$d jours</item>
+    </plurals>
+    <plurals name="ob_referral_success_days">
+        <item quantity="one">%1$d jour de SocialLite Pro gratuit</item>
+        <item quantity="other">%1$d jours de SocialLite Pro gratuits</item>
+    </plurals>
+    <plurals name="timer_duration_days">
+        <item quantity="one">%1$d jour</item>
+        <item quantity="other">%1$d jours</item>
+    </plurals>
+    <plurals name="today_card_app_blocks">
+        <item quantity="one">%1$d blocage</item>
+        <item quantity="other">%1$d blocages</item>
+    </plurals>
+    <plurals name="today_card_blocked_line">
+        <item quantity="one">%1$d distraction bloquée</item>
+        <item quantity="other">%1$d distractions bloquées</item>
+    </plurals>
+</resources>

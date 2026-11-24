@@ -1,0 +1,21 @@
+package com.revenuecat.purchases;
+
+import com.revenuecat.purchases.common.LogIntent;
+import kotlin.jvm.internal.m;
+import te.k;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class PurchasesOrchestrator$startPurchase$lambda$84$$inlined$log$1 extends m implements hf.a {
+    final /* synthetic */ LogIntent $intent;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public PurchasesOrchestrator$startPurchase$lambda$84$$inlined$log$1(LogIntent logIntent) {
+        super(0);
+        this.$intent = logIntent;
+    }
+
+    @Override // hf.a
+    public final String invoke() {
+        return k.c0(this.$intent.getEmojiList(), "", null, null, null, 62).concat(" finishTransactions is set to false and a purchase has been started. Are you sure you want to do this? More info here: https://errors.rev.cat/finishTransactions");
+    }
+}

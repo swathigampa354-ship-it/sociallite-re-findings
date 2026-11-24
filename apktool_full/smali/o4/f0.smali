@@ -1,0 +1,89 @@
+.class public Lo4/f0;
+.super Ljava/io/IOException;
+.source "SourceFile"
+
+
+# instance fields
+.field public final t:Z
+
+.field public final u:I
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/Throwable;ZI)V
+    .locals 0
+
+    invoke-direct {p0, p1, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    iput-boolean p3, p0, Lo4/f0;->t:Z
+
+    iput p4, p0, Lo4/f0;->u:I
+
+    return-void
+.end method
+
+.method public static a(Ljava/lang/RuntimeException;Ljava/lang/String;)Lo4/f0;
+    .locals 2
+
+    new-instance v0, Lo4/f0;
+
+    const/4 v1, 0x1
+
+    invoke-direct {v0, p1, p0, v1, v1}, Lo4/f0;-><init>(Ljava/lang/String;Ljava/lang/Throwable;ZI)V
+
+    return-object v0
+.end method
+
+.method public static b(Ljava/lang/String;)Lo4/f0;
+    .locals 4
+
+    new-instance v0, Lo4/f0;
+
+    const/4 v1, 0x0
+
+    const/4 v2, 0x1
+
+    const/4 v3, 0x0
+
+    invoke-direct {v0, p0, v3, v1, v2}, Lo4/f0;-><init>(Ljava/lang/String;Ljava/lang/Throwable;ZI)V
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public final getMessage()Ljava/lang/String;
+    .locals 3
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-super {p0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, "{contentIsMalformed="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-boolean v1, p0, Lo4/f0;->t:Z
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    const-string v1, ", dataType="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v1, p0, Lo4/f0;->u:I
+
+    const-string v2, "}"
+
+    invoke-static {v0, v1, v2}, Lt8/c;->l(Ljava/lang/StringBuilder;ILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

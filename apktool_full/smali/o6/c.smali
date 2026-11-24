@@ -1,0 +1,296 @@
+.class public final Lo6/c;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lo6/b;
+
+
+# instance fields
+.field public final a:Li5/o;
+
+.field public final b:Li5/d0;
+
+.field public final c:Lb6/h;
+
+.field public final d:Lo4/o;
+
+.field public final e:I
+
+.field public f:J
+
+.field public g:I
+
+.field public h:J
+
+
+# direct methods
+.method public constructor <init>(Li5/o;Li5/d0;Lb6/h;Ljava/lang/String;I)V
+    .locals 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lo6/c;->a:Li5/o;
+
+    iput-object p2, p0, Lo6/c;->b:Li5/d0;
+
+    iput-object p3, p0, Lo6/c;->c:Lb6/h;
+
+    iget p1, p3, Lb6/h;->b:I
+
+    iget p2, p3, Lb6/h;->c:I
+
+    iget v0, p3, Lb6/h;->e:I
+
+    mul-int/2addr v0, p1
+
+    div-int/lit8 v0, v0, 0x8
+
+    iget p3, p3, Lb6/h;->d:I
+
+    if-ne p3, v0, :cond_0
+
+    mul-int p3, p2, v0
+
+    mul-int/lit8 v1, p3, 0x8
+
+    div-int/lit8 p3, p3, 0xa
+
+    invoke-static {v0, p3}, Ljava/lang/Math;->max(II)I
+
+    move-result p3
+
+    iput p3, p0, Lo6/c;->e:I
+
+    new-instance v0, Lo4/n;
+
+    invoke-direct {v0}, Lo4/n;-><init>()V
+
+    invoke-static {p4}, Lo4/e0;->h(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p4
+
+    iput-object p4, v0, Lo4/n;->l:Ljava/lang/String;
+
+    iput v1, v0, Lo4/n;->g:I
+
+    iput v1, v0, Lo4/n;->h:I
+
+    iput p3, v0, Lo4/n;->m:I
+
+    iput p1, v0, Lo4/n;->y:I
+
+    iput p2, v0, Lo4/n;->z:I
+
+    iput p5, v0, Lo4/n;->A:I
+
+    new-instance p1, Lo4/o;
+
+    invoke-direct {p1, v0}, Lo4/o;-><init>(Lo4/n;)V
+
+    iput-object p1, p0, Lo6/c;->d:Lo4/o;
+
+    return-void
+
+    :cond_0
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    const-string p2, "Expected block size: "
+
+    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string p2, "; got: "
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p1, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    const/4 p2, 0x0
+
+    invoke-static {p2, p1}, Lo4/f0;->a(Ljava/lang/RuntimeException;Ljava/lang/String;)Lo4/f0;
+
+    move-result-object p1
+
+    throw p1
+.end method
+
+
+# virtual methods
+.method public final a(J)V
+    .locals 0
+
+    iput-wide p1, p0, Lo6/c;->f:J
+
+    const/4 p1, 0x0
+
+    iput p1, p0, Lo6/c;->g:I
+
+    const-wide/16 p1, 0x0
+
+    iput-wide p1, p0, Lo6/c;->h:J
+
+    return-void
+.end method
+
+.method public final b(IJ)V
+    .locals 7
+
+    new-instance v0, Lo6/e;
+
+    const/4 v2, 0x1
+
+    int-to-long v3, p1
+
+    iget-object v1, p0, Lo6/c;->c:Lb6/h;
+
+    move-wide v5, p2
+
+    invoke-direct/range {v0 .. v6}, Lo6/e;-><init>(Lb6/h;IJJ)V
+
+    iget-object p1, p0, Lo6/c;->a:Li5/o;
+
+    invoke-interface {p1, v0}, Li5/o;->q(Li5/y;)V
+
+    iget-object p1, p0, Lo6/c;->b:Li5/d0;
+
+    iget-object p2, p0, Lo6/c;->d:Lo4/o;
+
+    invoke-interface {p1, p2}, Li5/d0;->a(Lo4/o;)V
+
+    return-void
+.end method
+
+.method public final c(Li5/n;J)Z
+    .locals 18
+
+    move-object/from16 v0, p0
+
+    move-wide/from16 v1, p2
+
+    :goto_0
+    const-wide/16 v3, 0x0
+
+    cmp-long v5, v1, v3
+
+    const/4 v6, 0x1
+
+    if-lez v5, :cond_1
+
+    iget v7, v0, Lo6/c;->g:I
+
+    iget v8, v0, Lo6/c;->e:I
+
+    if-ge v7, v8, :cond_1
+
+    sub-int/2addr v8, v7
+
+    int-to-long v7, v8
+
+    invoke-static {v7, v8, v1, v2}, Ljava/lang/Math;->min(JJ)J
+
+    move-result-wide v7
+
+    long-to-int v5, v7
+
+    iget-object v7, v0, Lo6/c;->b:Li5/d0;
+
+    move-object/from16 v8, p1
+
+    invoke-interface {v7, v8, v5, v6}, Li5/d0;->b(Lo4/i;IZ)I
+
+    move-result v5
+
+    const/4 v6, -0x1
+
+    if-ne v5, v6, :cond_0
+
+    move-wide v1, v3
+
+    goto :goto_0
+
+    :cond_0
+    iget v3, v0, Lo6/c;->g:I
+
+    add-int/2addr v3, v5
+
+    iput v3, v0, Lo6/c;->g:I
+
+    int-to-long v3, v5
+
+    sub-long/2addr v1, v3
+
+    goto :goto_0
+
+    :cond_1
+    iget-object v1, v0, Lo6/c;->c:Lb6/h;
+
+    iget v2, v1, Lb6/h;->d:I
+
+    iget v3, v0, Lo6/c;->g:I
+
+    div-int/2addr v3, v2
+
+    if-lez v3, :cond_2
+
+    iget-wide v7, v0, Lo6/c;->f:J
+
+    iget-wide v9, v0, Lo6/c;->h:J
+
+    iget v1, v1, Lb6/h;->c:I
+
+    int-to-long v13, v1
+
+    sget v1, Lr4/v;->a:I
+
+    sget-object v15, Ljava/math/RoundingMode;->FLOOR:Ljava/math/RoundingMode;
+
+    const-wide/32 v11, 0xf4240
+
+    invoke-static/range {v9 .. v15}, Lr4/v;->H(JJJLjava/math/RoundingMode;)J
+
+    move-result-wide v9
+
+    add-long v12, v7, v9
+
+    mul-int v15, v3, v2
+
+    iget v1, v0, Lo6/c;->g:I
+
+    sub-int v16, v1, v15
+
+    const/4 v14, 0x1
+
+    const/16 v17, 0x0
+
+    iget-object v11, v0, Lo6/c;->b:Li5/d0;
+
+    invoke-interface/range {v11 .. v17}, Li5/d0;->d(JIIILi5/c0;)V
+
+    move/from16 v1, v16
+
+    iget-wide v7, v0, Lo6/c;->h:J
+
+    int-to-long v2, v3
+
+    add-long/2addr v7, v2
+
+    iput-wide v7, v0, Lo6/c;->h:J
+
+    iput v1, v0, Lo6/c;->g:I
+
+    :cond_2
+    if-gtz v5, :cond_3
+
+    return v6
+
+    :cond_3
+    const/4 v1, 0x0
+
+    return v1
+.end method

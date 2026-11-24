@@ -1,0 +1,13 @@
+.class public final Landroidx/lifecycle/a0;
+.super Landroidx/lifecycle/c0;
+.source "SourceFile"
+
+
+# virtual methods
+.method public final e()Z
+    .locals 1
+
+    const/4 v0, 0x1
+
+    return v0
+.end method

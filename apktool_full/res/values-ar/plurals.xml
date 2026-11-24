@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="app_limit_group_app_count">
+        <item quantity="zero">%1$d تطبيقات</item>
+        <item quantity="one">%1$d تطبيق</item>
+        <item quantity="two">%1$d تطبيقان</item>
+        <item quantity="few">%1$d تطبيقات</item>
+        <item quantity="many">%1$d تطبيقًا</item>
+        <item quantity="other">%1$d تطبيق</item>
+    </plurals>
+    <plurals name="block_active_title">
+        <item quantity="zero">جارٍ حظر %1$d تطبيق</item>
+        <item quantity="one">جارٍ حظر %1$d تطبيق</item>
+        <item quantity="two">جارٍ حظر %1$d تطبيقين</item>
+        <item quantity="few">جارٍ حظر %1$d تطبيقات</item>
+        <item quantity="many">جارٍ حظر %1$d تطبيقًا</item>
+        <item quantity="other">جارٍ حظر %1$d تطبيقات</item>
+    </plurals>
+    <plurals name="block_pause_challenge_add_fingers">
+        <item quantity="zero">أضف %1$d إصبع</item>
+        <item quantity="one">أضف %1$d إصبع</item>
+        <item quantity="two">أضف %1$d إصبعين</item>
+        <item quantity="few">أضف %1$d أصابع</item>
+        <item quantity="many">أضف %1$d إصبعًا</item>
+        <item quantity="other">أضف %1$d أصابع</item>
+    </plurals>
+    <plurals name="goal_days_within_limit">
+        <item quantity="zero">%1$d يوم ضمن حدك</item>
+        <item quantity="one">%1$d يوم ضمن حدك</item>
+        <item quantity="two">%1$d يومان ضمن حدك</item>
+        <item quantity="few">%1$d أيام ضمن حدك</item>
+        <item quantity="many">%1$d يومًا ضمن حدك</item>
+        <item quantity="other">%1$d يوم ضمن حدك</item>
+    </plurals>
+    <plurals name="ob_goal_time_hours">
+        <item quantity="zero">%1$s ساعة</item>
+        <item quantity="one">%1$s ساعة</item>
+        <item quantity="two">%1$s ساعتين</item>
+        <item quantity="few">%1$s ساعات</item>
+        <item quantity="many">%1$s ساعة</item>
+        <item quantity="other">%1$s ساعة</item>
+    </plurals>
+    <plurals name="ob_pace_day_count">
+        <item quantity="zero">%1$d يوم</item>
+        <item quantity="one">%1$d يوم</item>
+        <item quantity="two">%1$d يومين</item>
+        <item quantity="few">%1$d أيام</item>
+        <item quantity="many">%1$d يومًا</item>
+        <item quantity="other">%1$d يوم</item>
+    </plurals>
+    <plurals name="ob_referral_success_days">
+        <item quantity="zero">SocialLite Pro مجانًا لمدة %1$d يوم</item>
+        <item quantity="one">SocialLite Pro مجانًا ليوم واحد</item>
+        <item quantity="two">SocialLite Pro مجانًا ليومين</item>
+        <item quantity="few">SocialLite Pro مجانًا لمدة %1$d أيام</item>
+        <item quantity="many">SocialLite Pro مجانًا لمدة %1$d يومًا</item>
+        <item quantity="other">SocialLite Pro مجانًا لمدة %1$d يوم</item>
+    </plurals>
+    <plurals name="timer_duration_days">
+        <item quantity="zero">%1$d يوم</item>
+        <item quantity="one">%1$d يوم</item>
+        <item quantity="two">%1$d يومان</item>
+        <item quantity="few">%1$d أيام</item>
+        <item quantity="many">%1$d يومًا</item>
+        <item quantity="other">%1$d يوم</item>
+    </plurals>
+    <plurals name="today_card_app_blocks">
+        <item quantity="zero">%1$d عملية حظر</item>
+        <item quantity="one">%1$d عملية حظر</item>
+        <item quantity="two">%1$d عمليتا حظر</item>
+        <item quantity="few">%1$d عمليات حظر</item>
+        <item quantity="many">%1$d عملية حظر</item>
+        <item quantity="other">%1$d عمليات حظر</item>
+    </plurals>
+    <plurals name="today_card_blocked_line">
+        <item quantity="zero">تم حظر %1$d مصدر تشتيت</item>
+        <item quantity="one">تم حظر %1$d مصدر تشتيت</item>
+        <item quantity="two">تم حظر %1$d مصدرَي تشتيت</item>
+        <item quantity="few">تم حظر %1$d مصادر تشتيت</item>
+        <item quantity="many">تم حظر %1$d مصدر تشتيت</item>
+        <item quantity="other">تم حظر %1$d مصادر تشتيت</item>
+    </plurals>
+</resources>

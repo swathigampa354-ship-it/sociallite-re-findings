@@ -1,0 +1,42 @@
+package t3;
+
+import android.graphics.Rect;
+import android.view.VelocityTracker;
+import android.view.ViewConfiguration;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.TextView;
+
+/* JADX INFO: loaded from: classes.dex */
+public abstract class p {
+    public static AccessibilityNodeInfo.AccessibilityAction a() {
+        return AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_IN_DIRECTION;
+    }
+
+    public static float b(VelocityTracker velocityTracker, int i2) {
+        return velocityTracker.getAxisVelocity(i2);
+    }
+
+    public static void c(Rect rect, AccessibilityNodeInfo accessibilityNodeInfo) {
+        accessibilityNodeInfo.getBoundsInWindow(rect);
+    }
+
+    public static CharSequence d(AccessibilityNodeInfo accessibilityNodeInfo) {
+        return accessibilityNodeInfo.getContainerTitle();
+    }
+
+    public static int e(ViewConfiguration viewConfiguration, int i2, int i10, int i11) {
+        return viewConfiguration.getScaledMaximumFlingVelocity(i2, i10, i11);
+    }
+
+    public static int f(ViewConfiguration viewConfiguration, int i2, int i10, int i11) {
+        return viewConfiguration.getScaledMinimumFlingVelocity(i2, i10, i11);
+    }
+
+    public static boolean g(AccessibilityNodeInfo accessibilityNodeInfo) {
+        return accessibilityNodeInfo.isAccessibilityDataSensitive();
+    }
+
+    public static void h(TextView textView, int i2, float f10) {
+        textView.setLineHeight(i2, f10);
+    }
+}

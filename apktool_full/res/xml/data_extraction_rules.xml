@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="sociallite_auth.xml" />
+        <exclude domain="sharedpref" path="sociallite_auth_fallback.xml" />
+        <exclude domain="sharedpref" path="sl_device_identity.xml" />
+        <exclude domain="sharedpref" path="sl_device_identity_fallback.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="sociallite_auth.xml" />
+        <exclude domain="sharedpref" path="sociallite_auth_fallback.xml" />
+        <exclude domain="sharedpref" path="sl_device_identity.xml" />
+        <exclude domain="sharedpref" path="sl_device_identity_fallback.xml" />
+    </device-transfer>
+</data-extraction-rules>

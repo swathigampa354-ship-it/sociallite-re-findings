@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="com_facebook_device_auth_instructions">Visita &lt;b>facebook.com/device&lt;/b> e introduce el código que aparece más arriba.</string>
+    <string name="com_facebook_internet_permission_error_message">El inicio de sesión en WebView requiere permisos de INTERNET</string>
+    <string name="com_facebook_internet_permission_error_title">Error de AndroidManifest</string>
+    <string name="com_facebook_loading">Cargando…</string>
+    <string name="com_facebook_smart_device_instructions">Para conectar tu cuenta, abre la aplicación de Facebook en tu dispositivo móvil y comprueba las notificaciones.</string>
+    <string name="com_facebook_smart_device_instructions_or">- O -</string>
+    <string name="com_facebook_smart_login_confirmation_cancel">¿No eres tú?</string>
+    <string name="com_facebook_smart_login_confirmation_continue_as">Continuar como %1$s</string>
+    <string name="com_facebook_smart_login_confirmation_title">Confirmar inicio de sesión</string>
+</resources>

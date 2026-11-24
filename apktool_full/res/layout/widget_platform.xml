@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/widget_root" android:background="#ffffffff" android:padding="4.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/widget_icon" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerInside" android:contentDescription="Platform icon" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/widget_locked" android:background="#b3000000" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageView android:id="@id/widget_locked_icon" android:layout_width="32.0dp" android:layout_height="32.0dp" android:scaleType="centerInside" android:contentDescription="Platform icon" android:alpha="0.5" />
+        <TextView android:textSize="18.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:text="" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:id="@id/widget_locked_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" />
+    </LinearLayout>
+</FrameLayout>

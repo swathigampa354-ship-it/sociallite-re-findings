@@ -1,0 +1,34 @@
+.class public final Lcom/revenuecat/purchases/storage/LocalFileCache$DefaultImpls;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/revenuecat/purchases/storage/LocalFileCache;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "DefaultImpls"
+.end annotation
+
+
+# direct methods
+.method public static synthetic generateLocalFilesystemURI$default(Lcom/revenuecat/purchases/storage/LocalFileCache;Ljava/net/URL;Lcom/revenuecat/purchases/models/Checksum;ILjava/lang/Object;)Ljava/net/URI;
+    .locals 0
+
+    invoke-static {p0, p1, p2, p3, p4}, Lcom/revenuecat/purchases/storage/LocalFileCache;->generateLocalFilesystemURI$default(Lcom/revenuecat/purchases/storage/LocalFileCache;Ljava/net/URL;Lcom/revenuecat/purchases/models/Checksum;ILjava/lang/Object;)Ljava/net/URI;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic saveData$default(Lcom/revenuecat/purchases/storage/LocalFileCache;Ljava/io/InputStream;Ljava/net/URI;Lcom/revenuecat/purchases/models/Checksum;ILjava/lang/Object;)V
+    .locals 0
+
+    invoke-static/range {p0 .. p5}, Lcom/revenuecat/purchases/storage/LocalFileCache;->saveData$default(Lcom/revenuecat/purchases/storage/LocalFileCache;Ljava/io/InputStream;Ljava/net/URI;Lcom/revenuecat/purchases/models/Checksum;ILjava/lang/Object;)V
+
+    return-void
+.end method

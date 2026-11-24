@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="app_limit_group_app_count">
+        <item quantity="other">%1$d個のアプリ</item>
+    </plurals>
+    <plurals name="block_active_title">
+        <item quantity="one">%1$d個のアプリをブロック中</item>
+        <item quantity="other">%1$d個のアプリをブロック中</item>
+    </plurals>
+    <plurals name="block_pause_challenge_add_fingers">
+        <item quantity="one">あと%1$d本の指を置いてください</item>
+        <item quantity="other">あと%1$d本の指を置いてください</item>
+    </plurals>
+    <plurals name="goal_days_within_limit">
+        <item quantity="other">制限内で過ごした日数：%1$d日</item>
+    </plurals>
+    <plurals name="ob_goal_time_hours">
+        <item quantity="other">%1$s時間</item>
+    </plurals>
+    <plurals name="ob_pace_day_count">
+        <item quantity="other">%1$d日</item>
+    </plurals>
+    <plurals name="ob_referral_success_days">
+        <item quantity="other">SocialLite Proを%1$d日間無料で利用できます</item>
+    </plurals>
+    <plurals name="timer_duration_days">
+        <item quantity="other">%1$d日</item>
+    </plurals>
+    <plurals name="today_card_app_blocks">
+        <item quantity="one">%1$d回ブロック</item>
+        <item quantity="other">%1$d回ブロック</item>
+    </plurals>
+    <plurals name="today_card_blocked_line">
+        <item quantity="one">%1$d件の誘惑をブロック</item>
+        <item quantity="other">%1$d件の誘惑をブロック</item>
+    </plurals>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="com_facebook_device_auth_instructions">Kunjungi &lt;b>facebook.com/device&lt;/b> dan masukkan kode yang ditampilkan di atas.</string>
+    <string name="com_facebook_internet_permission_error_message">Masuk WebView memerlukan izin INTERNET</string>
+    <string name="com_facebook_internet_permission_error_title">Kesalahan AndroidManifest</string>
+    <string name="com_facebook_loading">Memuat…</string>
+    <string name="com_facebook_smart_device_instructions">Untuk menghubungkan akun Anda, buka aplikasi Facebook di perangkat seluler Anda dan periksa pemberitahuan.</string>
+    <string name="com_facebook_smart_device_instructions_or">- ATAU -</string>
+    <string name="com_facebook_smart_login_confirmation_cancel">Bukan Anda?</string>
+    <string name="com_facebook_smart_login_confirmation_title">Konfirmasikan Masuk</string>
+</resources>
