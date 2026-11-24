@@ -505,7 +505,7 @@ High confidence:
 - Manifest/components, permissions, API endpoints with literal call sites, prefs keys, Room schema, billing IDs, deeplink contracts, WebView bridge method names, VPN DNS mechanics, notification maps, accessibility node IDs, device identity rotation.
 
 Medium confidence:
-- Exact conditions inside remaining raw/bytecode methods: `oe/i1.q` (not decompiled), `ge/mb.l`, `fe/h0` lambda cases, `ge/c.Q`/`Y` (raw), `BlockedAppActivity` Compose lambda (raw).
+- Exact conditions inside remaining raw/bytecode methods: `ge/mb.l`; verified smali facts exist for `oe/i1`/`q`, `fe/h0` lambda cases, `ge/c.Q`/`Y`, and `BlockedAppActivity` Compose lambdas, but further static reasoning is not in scope.
 - Kid script runtime behavior is inferred from asset source + config builder, not executed.
 
 Low confidence / unverified:
@@ -523,6 +523,7 @@ Low confidence / unverified:
 - `resources.json` — apktool resource/manifest evidence (`ev_8f9f...`).
 - `AndroidManifest.xml` — decoded manifest.
 - `apktool_full/` — full apktool decode (`apktool_full.log`, `apktool_full/res/values/strings.xml`, `apktool_full/AndroidManifest.xml`).
+  - `apktool_full/smali/oe/i1.smali`, `apktool_full/smali/fe/h0.smali`, `apktool_full/smali/ge/c.smali`, `apktool_full/smali/com/sociallite/android/data/BlockedAppActivity.smali`, `apktool_full/smali/com/sociallite/android/data/AppBlockerService.smali` (verified smali facts)
 - `jadx_out/sources/` — full JADX Java tree.
 - Key files:
   - `com/sociallite/android/MainActivity.java`
